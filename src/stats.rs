@@ -140,6 +140,7 @@ pub fn format_number(n: usize) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use git2::Signature;
     use tempfile::TempDir;
 
     #[test]
@@ -157,7 +158,7 @@ mod tests {
         let path = td.path();
 
         let repo = Repository::init(path).unwrap();
-        let sig = repo.signature().unwrap();
+        let sig = Signature::now("test", "test@example.com").unwrap();
 
         let mut index = repo.index().unwrap();
         let p = Path::new(repo.workdir().unwrap()).join("file_a");
@@ -185,7 +186,7 @@ mod tests {
         let path = td.path();
 
         let repo = Repository::init(path).unwrap();
-        let sig = repo.signature().unwrap();
+        let sig = Signature::now("test", "test@example.com").unwrap();
 
         let mut index = repo.index().unwrap();
         let p = Path::new(repo.workdir().unwrap()).join("file_a");
