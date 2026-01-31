@@ -1,0 +1,17 @@
+name: Rust
+
+on:
+  release:
+    types: [published]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Rust Release binary
+      uses: rust-build/rust-build.action@v1.4.5
