@@ -2,8 +2,14 @@
 name = "gno"
 version = "0.1.0"
 edition = "2024"
+repository = "https://github.com/moamenhredeen/gno"
 
 [dependencies]
 clap = { version = "4.5.56", features = ["cargo"] }
 git2 = "0.18"
 tempfile = "3.24.0"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
